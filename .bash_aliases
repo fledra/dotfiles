@@ -67,7 +67,7 @@ alias dcb="docker compose build && docker-compose up"
 ## source a file if it exists
 source_if_exists() {
   if [ -f $1 ]; then
-      source $1
+    source $1
     return 0
   fi
 
@@ -78,6 +78,16 @@ alias sif="source_if_exists"
 
 ## get random bytes
 rb() {
-  local len=128
-  echo $#
+  local len
+
+  if [ $# -gt 0 ]; then
+    case $1 in
+      '' | *[!0-9]*) len=128 ;;
+      *) len=$1 ;;
+    esac
+  else
+    len=128
+  fi
+
+  (tr -dc A-Za-z0-9 < /dev/urandom | head -c $len) && echo
 }
