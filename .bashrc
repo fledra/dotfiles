@@ -36,10 +36,10 @@ fi
 
 # setup tab completion
 if ! shopt -oq posix; then
-  if [ -f  ]; then
-    . /usr/share/bash-completion/bash_completion
-  elif [ -f /etc/bash_completion ]; then
-    . /etc/bash_completion
+  source_if_exists /usr/share/bash-completion/bash_completion
+
+  if [ $? -eq 1 ]; then
+    source_if_exists /etc/bash_completion
   fi
 fi
 
