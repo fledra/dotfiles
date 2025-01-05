@@ -3,7 +3,8 @@
 # general
 alias q="exit"
 alias sa="cat ~/.bash_aliases"
-alias ea="$EDITOR ~/bash_aliases"
+alias ea="$EDITOR ~/.bash_aliases"
+alias rea="sif ~/.bash_aliases"
 
 # system shortcuts
 alias SS="sudo systemctl"
@@ -64,10 +65,14 @@ alias dcb="docker compose build && docker-compose up"
 # advanced
 
 ## source a file if it exists
-source_if_exists () {
+source_if_exists() {
   if [ -f $1 ]; then
       source $1
+    return 0
   fi
+
+  echo "Could not find file $1" >&2
+  return 1
 }
 alias sif="source_if_exists"
 
