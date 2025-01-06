@@ -5,6 +5,7 @@ alias q="exit"
 alias sa="cat ~/.bash_aliases"
 alias ea="$EDITOR ~/.bash_aliases"
 alias rea="sif ~/.bash_aliases"
+alias res="stow -d $DOTFILES -t ~/ -v ."
 
 # system shortcuts
 alias SS="sudo systemctl"
