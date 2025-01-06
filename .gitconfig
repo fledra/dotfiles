@@ -1,9 +1,13 @@
 [user]
 name = fledra
-email = git@noreply.fledra.dev
+email = baran@fledra.dev
+signingKey = 0xBF5E824D19BAAD5A!
 
 [init]
 defaultBranch = main
+
+[commit]
+gpgSign = true
 
 [pull]
 rebase = true
@@ -14,4 +18,4 @@ autoStash = true
 [alias]
 resign = "!_() { : git checkout ; [ \"$#\" -eq 0 ] && echo 'Usage: resign <rev-list>' && exit 2; \
   git filter-branch --commit-filter ' \
-  if [ \"$GIT_COMMITTER_EMAIL\" = \"git@noreply.fledra.dev\" ]; then git commit-tree -S \"$@\"; else git commit-tree \"$@\"; fi' $1; }; _"
+  if [ \"$GIT_COMMITTER_EMAIL\" = \"baran@fledra.dev\" ]; then git commit-tree -S \"$@\"; else git commit-tree \"$@\"; fi' $1; }; _"

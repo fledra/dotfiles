@@ -27,6 +27,9 @@ HISTSIZE=2000
 HISTFILESIZE=5000
 HISTCONTROL=ignoreboth
 
+# make GPG work with remote terminals
+export GPG_TTY=$(tty)
+
 # make less more friendly for non-text input files
 command -v lesspipe >/dev/null && eval "$(SHELL=/bin/sh lesspipe)"
 
