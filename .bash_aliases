@@ -91,3 +91,20 @@ rb() {
 
   (tr -dc A-Za-z0-9 < /dev/urandom | head -c $len) && echo
 }
+
+luksopen() {
+  if [ $# -lt 2 ]; then
+    echo "USAGE: luksopen [device-path] [mapped-name]"
+    return 1
+  fi
+
+  sudo cryptsetup luksOpen $1 $2
+
+  if [ $? -eq 0 ]; then
+    echo "$1 opened and mapped to /dev/mapper/$2"
+    return 0
+  fi
+
+  echo "Failed to open $1"
+  return 2
+}
