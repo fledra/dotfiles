@@ -59,3 +59,15 @@ function color_my_prompt {
   export PS1="$__user_and_host $__cur_location $__git_branch_color$__git_branch$__prompt_tail$__last_color "
 }
 color_my_prompt
+
+# node version manager
+export NVM_DIR="$XDG_CONFIG_HOME/nvm"
+source_if_exists "$NVM_DIR/nvm.sh"  # This loads nvm
+source_if_exists "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+# pnpm
+export PNPM_HOME="$XDG_DATA_HOME/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
