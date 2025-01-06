@@ -7,7 +7,7 @@ export LC_ALL=C
 export PATH="$PATH:$(find ~/.local/bin -type d | paste -sd ':' -)"
 
 # where dotfiles reside
-export DOTFILES="~/.dotfiles"
+export DOTFILES="$HOME/.dotfiles"
 
 # default programs
 export EDITOR="nvim"
