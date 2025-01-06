@@ -1,0 +1,17 @@
+[user]
+name = fledra
+email = git@noreply.fledra.dev
+
+[init]
+defaultBranch = main
+
+[pull]
+rebase = true
+
+[rebase]
+autoStash = true
+
+[alias]
+resign = "!_() { : git checkout ; [ \"$#\" -eq 0 ] && echo 'Usage: resign <rev-list>' && exit 2; \
+  git filter-branch --commit-filter ' \
+  if [ \"$GIT_COMMITTER_EMAIL\" = \"git@noreply.fledra.dev\" ]; then git commit-tree -S \"$@\"; else git commit-tree \"$@\"; fi' $1; }; _"
