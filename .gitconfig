@@ -16,6 +16,7 @@ rebase = true
 autoStash = true
 
 [alias]
-resign = "!_() { : git checkout ; [ \"$#\" -eq 0 ] && echo 'Usage: resign <rev-list>' && exit 2; \
-  git filter-branch --commit-filter ' \
-  if [ \"$GIT_COMMITTER_EMAIL\" = \"baran@fledra.dev\" ]; then git commit-tree -S \"$@\"; else git commit-tree \"$@\"; fi' $1; }; _"
+resign = "!_() { \
+  [ $# -eq 0 ] && echo 'Usage: resign <rev-list>' && exit 2; \
+  git filter-branch --commit-filter ' [ \"$GIT_COMMITTER_EMAIL\" = \"baran@fledra.dev\" ] && git commit-tree -S \"$@\"' $1; \
+}; _"
